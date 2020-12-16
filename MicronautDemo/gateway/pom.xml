@@ -105,6 +105,10 @@
       <version>4.1.0</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
@@ -138,10 +142,17 @@
               <artifactId>micronaut-validation</artifactId>
               <version>${micronaut.version}</version>
             </path>
+            <path>
+              <groupId>io.micronaut.openapi</groupId>
+              <artifactId>micronaut-openapi</artifactId>
+              <version>2.0.0</version>
+            </path>
           </annotationProcessorPaths>
+          <fork>true</fork>
           <compilerArgs>
             <arg>-Amicronaut.processing.group=com.joelkell.demo</arg>
             <arg>-Amicronaut.processing.module=gateway</arg>
+            <arg>-J-Dmicronaut.openapi.views.spec=rapidoc.enabled=true,swagger-ui.enabled=true,swagger-ui.theme=flattop</arg>
           </compilerArgs>
         </configuration>
         <executions>
