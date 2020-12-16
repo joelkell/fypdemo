@@ -11,39 +11,13 @@ function App() {
       return response
         .json()
         .then((data) => {
-          var products = [];
-
-          for (var i = 0; i < data.length; i++) {
-            let p = new Product();
-            p._id = data[i]._id;
-            p.name = data[i].name;
-            p.description = data[i].description;
-            p.stockLevel = data[i].stockLevel;
-            p.price = data[i].price;
-            p.categories = data[i].categories;
-
-            console.log("Product: " + i + " " + JSON.stringify(p));
-
-            products.push(p);
-          }
-          setProductP(JSON.stringify(products));
+          setProductP(JSON.stringify(data));
         })
         .catch((err) => {
           console.log(err);
         });
     });
   };
-
-  class Product {
-    constructor(_id, name, description, stockLevel, price, categories) {
-      this._id = _id;
-      this.name = name;
-      this.description = description;
-      this.stockLevel = stockLevel;
-      this.price = price;
-      this.categories = categories;
-    }
-  }
 
   return (
     <div>
