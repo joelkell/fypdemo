@@ -14,7 +14,7 @@ public class ProductHttpWrapper {
   @BsonCreator
   @JsonCreator
   public ProductHttpWrapper(
-      @JsonProperty("reponse") @BsonProperty("reponse") HttpStatus response,
+      @JsonProperty("response") @BsonProperty("response") HttpStatus response,
       @JsonProperty("product") @BsonProperty("product") Product product,
       @JsonProperty("body") @BsonProperty("body") String body) {
     this.product = product;

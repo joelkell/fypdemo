@@ -12,6 +12,7 @@
     <modules>
         <module>products</module>
         <module>users</module>
+        <module>reviews</module>
         <module>gateway</module>
     </modules>
 </project>

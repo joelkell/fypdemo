@@ -63,13 +63,12 @@ public class UserDAO {
     return Flowable.fromPublisher(getCollection().find(eq("email", email)).limit(1)).firstElement();
   }
 
-  public Boolean getUserPasswordMatchesName(User user){
+  public Boolean getUserPasswordMatchesName(User user) {
     Maybe<User> usernameExists = getUserByUsername(user.getUsername());
     if (usernameExists.blockingGet() != null) {
       User userExists = usernameExists.blockingGet();
       return passwordEncoder.matches(user.getPassword(), userExists.getPassword());
-    }
-    else{
+    } else {
       return false;
     }
   }

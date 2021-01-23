@@ -1,4 +1,4 @@
-package com.joelkell.demo.services.users;
+package com.joelkell.demo.services.reviews;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,28 +6,28 @@ import io.micronaut.http.HttpStatus;
 import org.bson.codecs.pojo.annotations.BsonCreator;
 import org.bson.codecs.pojo.annotations.BsonProperty;
 
-public class UserHttpWrapper {
-  private User user;
+public class ReviewHttpWrapper {
+  private Review review;
   private HttpStatus response;
   private String body;
 
   @BsonCreator
   @JsonCreator
-  public UserHttpWrapper(
+  public ReviewHttpWrapper(
       @JsonProperty("response") @BsonProperty("response") HttpStatus response,
-      @JsonProperty("user") @BsonProperty("user") User user,
+      @JsonProperty("review") @BsonProperty("review") Review review,
       @JsonProperty("body") @BsonProperty("body") String body) {
-    this.user = user;
+    this.review = review;
     this.response = response;
     this.body = body;
   }
 
-  public User getUser() {
-    return user;
+  public Review getReview() {
+    return review;
   }
 
-  public void setUser(User user) {
-    this.user = user;
+  public void setReview(Review review) {
+    this.review = review;
   }
 
   public HttpStatus getResponse() {
