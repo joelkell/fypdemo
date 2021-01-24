@@ -4,7 +4,6 @@ import io.micronaut.http.annotation.Body;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
-import javax.validation.Valid;
 import java.util.List;
 
 public interface ReviewServiceOperations {
@@ -16,9 +15,9 @@ public interface ReviewServiceOperations {
 
   Single<List<Review>> getReviewsByUserId(String id);
 
-  ReviewHttpWrapper addReview(@Body @Valid Review review);
+  ReviewHttpWrapper addReview(@Body Review review);
 
   Maybe<Review> deleteReview(String id);
 
-  ReviewHttpWrapper updateReview(String id, @Body @Valid Review review);
+  ReviewHttpWrapper updateReview(String id, @Body Review review);
 }
