@@ -1,14 +1,21 @@
 package com.joelkell.demo.user;
 
 import com.joelkell.demo.security.BCryptPasswordEncoderService;
+import com.joelkell.demo.wrapper.TokenHttpWrapper;
 import com.joelkell.demo.wrapper.UserHttpWrapper;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.model.FindOneAndReplaceOptions;
 import com.mongodb.reactivestreams.client.MongoClient;
 import com.mongodb.reactivestreams.client.MongoCollection;
 import io.micronaut.context.annotation.Bean;
+import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.HttpStatus;
+import io.micronaut.http.client.RxHttpClient;
+import io.micronaut.http.client.annotation.Client;
+import io.micronaut.http.client.exceptions.HttpClientResponseException;
+import io.micronaut.security.authentication.UsernamePasswordCredentials;
+import io.micronaut.security.token.jwt.render.BearerAccessRefreshToken;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
@@ -30,6 +37,10 @@ public class UserDAO {
 
   @Inject private MongoClient mongoClient;
   @Inject private UserConfiguration config;
+
+  @Client(id = "gateway")
+  @Inject
+  RxHttpClient httpClient;
 
   @Bean
   private MongoCollection getCollection() {
@@ -61,6 +72,20 @@ public class UserDAO {
 
   public Maybe<User> getUserByEmail(String email) {
     return Flowable.fromPublisher(getCollection().find(eq("email", email)).limit(1)).firstElement();
+  }
+
+  public TokenHttpWrapper getToken(User user) {
+    UsernamePasswordCredentials creds =
+        new UsernamePasswordCredentials(user.getUsername(), user.getPassword());
+    HttpRequest<?> request = HttpRequest.POST("/login", creds);
+    HttpResponse<?> rsp;
+    try {
+      rsp = httpClient.toBlocking().exchange(request, BearerAccessRefreshToken.class);
+    } catch (HttpClientResponseException e) {
+      rsp = HttpResponse.status(HttpStatus.UNAUTHORIZED).body("Username or password is incorrect");
+    }
+    TokenHttpWrapper wrap = new TokenHttpWrapper(rsp);
+    return wrap;
   }
 
   public Boolean getUserPasswordMatchesName(User user) {

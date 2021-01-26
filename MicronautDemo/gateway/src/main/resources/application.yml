@@ -19,6 +19,22 @@ micronaut:
         swagger-ui:
           paths: classpath:META-INF/swagger/views/swagger-ui
           mapping: /swagger-ui/**
+  security:
+    enabled: true
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: cGxlYXNlQ2hhbmdlVGhpc1NlY3JldEZvckFOZXdPbmU=
+    intercept-url-map:
+      - pattern: /swagger-ui/**
+        access:
+          - isAnonymous()
+      - pattern: /swagger/**
+        access:
+          - isAnonymous()
 consul:
   client:
     registration:

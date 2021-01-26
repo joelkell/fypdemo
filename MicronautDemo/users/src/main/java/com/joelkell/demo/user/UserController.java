@@ -1,6 +1,7 @@
 package com.joelkell.demo.user;
 
 import com.joelkell.demo.security.BCryptPasswordEncoderService;
+import com.joelkell.demo.wrapper.TokenHttpWrapper;
 import com.joelkell.demo.wrapper.UserHttpWrapper;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -28,6 +29,12 @@ public class UserController {
   @Produces(MediaType.APPLICATION_JSON)
   public Maybe<User> getUserById(String id) {
     return userDAO.getUserById(id);
+  }
+
+  @Post("/login")
+  @Consumes(MediaType.APPLICATION_JSON)
+  public TokenHttpWrapper getToken(@Body @Valid User user) {
+    return userDAO.getToken(user);
   }
 
   @Post("/password")
