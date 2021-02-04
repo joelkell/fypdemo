@@ -3,6 +3,7 @@ micronaut:
     name: carts
   server:
     port: 8006
+    thread-selection: auto
 consul:
   client:
     registration:

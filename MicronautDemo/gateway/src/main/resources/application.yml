@@ -5,6 +5,7 @@ micronaut:
     port: 8080
     cors:
       enabled: true
+    thread-selection: auto
   router:
     static-resources:
       swagger:

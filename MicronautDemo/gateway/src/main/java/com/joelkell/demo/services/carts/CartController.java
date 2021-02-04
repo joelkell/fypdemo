@@ -2,6 +2,8 @@ package com.joelkell.demo.services.carts;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import io.reactivex.Maybe;
@@ -9,6 +11,7 @@ import io.reactivex.Maybe;
 import javax.validation.Valid;
 
 @Secured(SecurityRule.IS_ANONYMOUS)
+@ExecuteOn(TaskExecutors.IO)
 @Controller("/carts")
 public class CartController {
   private final CartServiceOperations cartServiceOperations;

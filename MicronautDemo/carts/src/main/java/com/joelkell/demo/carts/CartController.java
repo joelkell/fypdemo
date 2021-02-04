@@ -3,12 +3,15 @@ package com.joelkell.demo.carts;
 import com.joelkell.demo.wrapper.CartHttpWrapper;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.reactivex.Maybe;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.math.BigDecimal;
 
+@ExecuteOn(TaskExecutors.IO)
 @Controller()
 public class CartController {
 

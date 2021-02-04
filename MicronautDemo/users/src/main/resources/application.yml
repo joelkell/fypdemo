@@ -3,6 +3,7 @@ micronaut:
     name: users
   server:
     port: 8004
+    thread-selection: auto
 consul:
   client:
     registration:

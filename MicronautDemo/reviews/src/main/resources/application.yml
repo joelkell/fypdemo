@@ -3,6 +3,7 @@ micronaut:
     name: reviews
   server:
     port: 8005
+    thread-selection: auto
 consul:
   client:
     registration:

@@ -2,6 +2,8 @@ package com.joelkell.demo.services.products;
 
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.micronaut.security.annotation.Secured;
 import io.micronaut.security.rules.SecurityRule;
 import io.reactivex.Maybe;
@@ -10,6 +12,7 @@ import io.reactivex.Single;
 import java.util.List;
 
 @Secured(SecurityRule.IS_ANONYMOUS)
+@ExecuteOn(TaskExecutors.IO)
 @Controller("/products")
 public class ProductController {
 

@@ -3,6 +3,7 @@ micronaut:
     name: products
   server:
     port: 8005
+    thread-selection: auto
 consul:
   client:
     registration:

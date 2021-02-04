@@ -5,6 +5,8 @@ import com.joelkell.demo.wrapper.TokenHttpWrapper;
 import com.joelkell.demo.wrapper.UserHttpWrapper;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
@@ -12,6 +14,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
 
+@ExecuteOn(TaskExecutors.IO)
 @Controller()
 public class UserController {
 

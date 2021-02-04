@@ -3,6 +3,8 @@ package com.joelkell.demo.orders;
 import com.joelkell.demo.wrapper.OrderHttpWrapper;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.scheduling.TaskExecutors;
+import io.micronaut.scheduling.annotation.ExecuteOn;
 import io.reactivex.Maybe;
 import io.reactivex.Single;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+@ExecuteOn(TaskExecutors.IO)
 @Controller()
 public class OrderController {
 
