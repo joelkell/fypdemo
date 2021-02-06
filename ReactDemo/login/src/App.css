@@ -1,0 +1,59 @@
+.login-header {
+  margin-top: 60px;
+  margin-bottom: 40px;
+}
+
+.error-row {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input {
+  margin-bottom: 20px;
+}
+
+.container {
+  border: 2px #dadada solid;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.form-width {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.login-button {
+  width: 20%;
+  height: 60px;
+}
+
+.login-button-column {
+  margin-bottom: 30px;
+}
+
+.error-message {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .form-width {
+    width: 80%;
+  }
+
+  .login-button {
+    width: 25%;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-width {
+    width: 100%;
+  }
+  .login-button {
+    width: 30%;
+  }
+}

@@ -1,69 +1,47 @@
 import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { createBrowserHistory } from "history";
 import MicroFrontend from "./MicroFrontend";
+import Header from "./components/Header/Header";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./App.css";
 
-const defaultHistory = createBrowserHistory();
+const { REACT_APP_LOGIN_HOST: loginHost } = process.env;
 
-const {
-  REACT_APP_PRODUCTS_HOST: productsHost,
-  REACT_APP_USERS_HOST: usersHost,
-} = process.env;
-
-function Header() {
-  return (
-    <div className="banner">
-      <h1 className="banner-title">
-        Micro Frontend Container Application Prototype
-      </h1>
-      <h4>Users and Products Services</h4>
-    </div>
-  );
+function Login({ history }) {
+  return <MicroFrontend history={history} host={loginHost} name="Login" />;
 }
 
-function Users({ history }) {
-  return <MicroFrontend history={history} host={usersHost} name="Users" />;
-}
-
-function Products({ history }) {
-  return (
-    <MicroFrontend history={history} host={productsHost} name="Products" />
-  );
-}
-
-function Home({ history }) {
-  const [input, setInput] = useState("");
-
+function Home() {
   return (
     <div>
-      <Header />
       <div className="home">
-        <div className="content">
-          <div className="user">
-            <Users />
-          </div>
-          <div class="border"></div>
-          <div className="product">
-            <Products />
-          </div>
-        </div>
+        <div>home</div>
       </div>
     </div>
   );
 }
 
-function App() {
-  return (
-    <BrowserRouter>
-      <React.Fragment>
-        <Switch>
-          <Route exact path="/" component={Home} />
-        </Switch>
-      </React.Fragment>
-    </BrowserRouter>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <React.Fragment>
+      <Header />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        {/* <Route exact path="/cart" component={Users} /> */}
+        <Route exact path="/login" component={Login} />
+        {/* <Route exact path="/signup">
+            <div>singup</div>
+          </Route>
+          <Route exact path="/logout">
+            <div>logout</div>
+          </Route>
+          <Route exact path="/myaccount">
+            <div>myaccount</div>
+          </Route> */}
+      </Switch>
+    </React.Fragment>
+  </BrowserRouter>
+);
 
 export default App;

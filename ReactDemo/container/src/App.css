@@ -19,7 +19,6 @@
   margin: auto;
   width: 70%;
   padding: 10px 0px;
-  background: #f5f5da;
   display: inline-block;
   border-radius: 10px;
 }
@@ -27,13 +26,3 @@
 .border {
   border: 2px black solid;
 }
-
-/* .product {
-  display: inline-block;
-  width: 45%;
-}
-
-.user {
-  display: inline-block;
-  width: 45%;
-} */

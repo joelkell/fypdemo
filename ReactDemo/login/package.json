@@ -1,7 +1,7 @@
 {
-  "name": "container",
+  "name": "login",
   "version": "1.0.0",
-  "description": "A micro frontend container",
+  "description": "A login micro frontend",
   "author": "Joel Kell",
   "scripts": {
     "start": "react-app-rewired start",
