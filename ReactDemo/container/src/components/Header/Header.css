@@ -2,3 +2,13 @@
   border-bottom: 1px solid #dadada;
   margin-bottom: 40px;
 }
+
+.dropdown-menu {
+  background-color: rgb(52, 58, 64) !important;
+}
+
+@media (max-width: 768px) {
+  .dropdown-menu {
+    border-color: rgb(52, 58, 64) !important;
+  }
+}

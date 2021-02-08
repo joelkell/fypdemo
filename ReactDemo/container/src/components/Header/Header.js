@@ -22,23 +22,31 @@ function Header() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          {/* <LinkContainer exact to="/cart">
+          <LinkContainer exact to="/cart">
             <Nav.Link>Cart</Nav.Link>
-          </LinkContainer> */}
+          </LinkContainer>
           <NavDropdown title="Account" id="basic-nav-dropdown">
             <LinkContainer exact to="/login">
-              <NavDropdown.Item>Login</NavDropdown.Item>
+              <NavDropdown.Item className="bg-dark text-white">
+                Login
+              </NavDropdown.Item>
             </LinkContainer>
-            {/* <LinkContainer to="/signup">
-              <NavDropdown.Item>Sign Up</NavDropdown.Item>
+            <LinkContainer to="/signup">
+              <NavDropdown.Item className="bg-dark text-white">
+                Sign Up
+              </NavDropdown.Item>
             </LinkContainer>
             <LinkContainer to="/logout">
-              <NavDropdown.Item>Logout</NavDropdown.Item>
+              <NavDropdown.Item className="bg-dark text-white">
+                Logout
+              </NavDropdown.Item>
             </LinkContainer>
-            <NavDropdown.Divider />
+            <NavDropdown.Divider className="bg-dark text-white" />
             <LinkContainer to="/myaccount">
-              <NavDropdown.Item>My Account</NavDropdown.Item>
-            </LinkContainer> */}
+              <NavDropdown.Item className="bg-dark text-white">
+                My Account
+              </NavDropdown.Item>
+            </LinkContainer>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

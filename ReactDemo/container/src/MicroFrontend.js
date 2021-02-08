@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import ReactDOM from "react-dom";
 
 class MicroFrontend extends React.Component {
   componentDidMount() {
@@ -11,12 +12,12 @@ class MicroFrontend extends React.Component {
     }
 
     fetch(`${host}/asset-manifest.json`)
-      .then(res => res.json())
-      .then(manifest => {
-        const script = document.createElement('script');
+      .then((res) => res.json())
+      .then((manifest) => {
+        const script = document.createElement("script");
         script.id = scriptId;
-        script.crossOrigin = '';
-        script.src = `${host}${manifest['main.js']}`;
+        script.crossOrigin = "";
+        script.src = `${host}${manifest["main.js"]}`;
         script.onload = this.renderMicroFrontend;
         document.head.appendChild(script);
       });
@@ -25,7 +26,13 @@ class MicroFrontend extends React.Component {
   componentWillUnmount() {
     const { name, window } = this.props;
 
-    window[`unmount${name}`](`${name}-container`);
+    if (typeof window[`unmount${name}`] === "function") {
+      window[`unmount${name}`](`${name}-container`);
+    } else {
+      ReactDOM.unmountComponentAtNode(
+        document.getElementById(`${name}-container`)
+      );
+    }
   }
 
   renderMicroFrontend = () => {

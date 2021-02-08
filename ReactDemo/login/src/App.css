@@ -3,25 +3,25 @@
   margin-bottom: 40px;
 }
 
-.error-row {
+.login-error-row {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.input {
+.login-input {
   margin-bottom: 20px;
 }
 
-.container {
+.login-container {
   border: 2px #dadada solid;
   box-shadow: 0 0 10px #9ecaed;
 }
 
-.center-text {
+.login-center-text {
   text-align: center;
 }
 
-.form-width {
+.login-form-width {
   width: 70%;
   margin: 0 auto;
 }
@@ -35,12 +35,12 @@
   margin-bottom: 30px;
 }
 
-.error-message {
+.login-error-message {
   color: red;
 }
 
 @media (max-width: 768px) {
-  .form-width {
+  .login-form-width {
     width: 80%;
   }
 
@@ -50,7 +50,7 @@
 }
 
 @media (max-width: 576px) {
-  .form-width {
+  .login-form-width {
     width: 100%;
   }
   .login-button {
