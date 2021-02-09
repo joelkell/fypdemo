@@ -8,9 +8,10 @@ function NoMatch({ history }) {
     <Container fluid="md">
       <Row>
         <Col>
-          <h1 className="display-3">
-            404: No match for <code>{history.location.pathname}</code>
-          </h1>
+          <h1 className="display-3">404: Page not found! :(</h1>
+          <p className="lead">
+            No match for <code>{history.location.pathname}</code>
+          </p>
         </Col>
       </Row>
     </Container>

@@ -1,4 +1,5 @@
 import React from "react";
+import NoMatch from "../NoMatch/NoMatch";
 
 class Product extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class Product extends React.Component {
       //return "Loading";
     }
     if (this.state.error) {
-      return <div>{this.state.errormessage}</div>;
+      return <NoMatch history={this.props.history} />;
       //return "Sorry, but that restaurant is currently unavailable.";
     }
 

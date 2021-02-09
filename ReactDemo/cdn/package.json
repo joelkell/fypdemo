@@ -1,0 +1,9 @@
+{
+  "name": "cdn",
+  "version": "1.0.0",
+  "description": "A cdn for image delivery",
+  "author": "Joel Kell",
+  "scripts": {
+    "start": "serve --port 5002 --cors content"
+  }
+}

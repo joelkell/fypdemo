@@ -1,0 +1,27 @@
+.item-carousel {
+  padding-bottom: 26px;
+  padding-top: 10px;
+}
+
+.react-multi-carousel-item {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.itemCarousel-button {
+  border-radius: 50% !important;
+  position: absolute !important;
+  z-index: 1;
+  opacity: 0.8;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  font-size: 30px !important;
+}
+
+.itemCarousel-button-left {
+  left: 0px;
+}
+
+.itemCarousel-button-right {
+  right: 0px;
+}

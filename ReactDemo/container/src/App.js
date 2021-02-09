@@ -4,17 +4,22 @@ import MicroFrontend from "./MicroFrontend";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
-import Browse from "./components/Browse/Browse";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import NoMatch from "./components/NoMatch/NoMatch";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-const { REACT_APP_LOGIN_HOST: loginHost } = process.env;
+const {
+  REACT_APP_LOGIN_HOST: loginHost,
+  REACT_APP_BROWSE_HOST: browseHost,
+} = process.env;
 
 function Login({ history }) {
   return <MicroFrontend history={history} host={loginHost} name="Login" />;
+}
+
+function Browse({ history }) {
+  return <MicroFrontend history={history} host={browseHost} name="Browse" />;
 }
 
 const App = () => {
@@ -37,7 +42,7 @@ const App = () => {
           <Route exact path="/myaccount">
             <div>myaccount</div>
           </Route>
-          <Route exact path="/product/:id" component={Product} />
+          <Route exact path="/products/:id" component={Product} />
           <Route path="*" component={NoMatch} />
         </Switch>
         <Footer />

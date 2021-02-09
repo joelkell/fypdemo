@@ -1,28 +1,3 @@
-.banner {
-  background: #f5f5da;
-  padding: 30px;
-  text-align: center;
-  border-radius: 20px;
-}
-
-.banner-title {
-  color: #2d3d29;
-}
-
-.home {
-  margin-top: 30px;
-  width: 100%;
-  text-align: center;
-}
-
-.content {
-  margin: auto;
-  width: 70%;
-  padding: 10px 0px;
-  display: inline-block;
-  border-radius: 10px;
-}
-
-.border {
-  border: 2px black solid;
+#root {
+  padding-bottom: 80px;
 }
