@@ -1,24 +1,23 @@
 import React, { useState, useRef } from "react";
-import { useHistory, withRouter } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import PropTypes from "prop-types";
 
-import "./App.css";
+import "./Signup.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function Login({ setToken }) {
-  let history = useHistory();
+function Signup({ history }) {
   const [error, setError] = useState("invisible");
+  const [errorText, setErrorText] = useState("An unkown error has occured");
   const usernameRef = useRef(null);
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
-  const login = () => {
-    fetch("http://localhost:8080/users/login", {
+  const signup = () => {
+    fetch("http://localhost:8080/users", {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -26,7 +25,7 @@ function Login({ setToken }) {
       },
       body: JSON.stringify({
         username: usernameRef.current.value,
-        email: "e@e",
+        email: emailRef.current.value,
         password: passwordRef.current.value,
       }),
     }).then((response) => {
@@ -37,10 +36,11 @@ function Login({ setToken }) {
   const handleResponse = (response) => {
     if (response.status === 200) {
       return response.json().then((data) => {
-        LoginSuccessful(data);
+        SignupSuccessful(data);
       });
-    } else if (response.status === 401) {
+    } else if (response.status === 403 || response.status) {
       return response.text().then((data) => {
+        setErrorText(data);
         setError("visibile");
       });
     } else {
@@ -48,39 +48,32 @@ function Login({ setToken }) {
     }
   };
 
-  const LoginSuccessful = (data) => {
-    let expires = new Date();
-    expires.setSeconds(expires.getSeconds() + data.expires_in);
-    data.expires_in = expires;
-    setToken(data);
+  const SignupSuccessful = (data) => {
     setError("invisible");
-    history.goBack();
+    history.push("/login");
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      login();
+      signup();
     }
   };
 
   return (
-    <Container fluid="md" className="login-container">
+    <Container fluid="md" className="signup-container">
       <Row>
-        <Col className="login-center-text">
-          <h1 className="display-4 login-header">Login</h1>
+        <Col className="signup-center-text">
+          <h1 className="display-6 signup-header">Signup</h1>
         </Col>
       </Row>
-      <Row className="login-error-row">
-        <Col xs={12} className="login-center-text">
-          <span className={`login-error-message ${error}`}>
-            Username or Password is incorrect. Please double-check and try
-            again.
-          </span>
+      <Row className="signup-error-row">
+        <Col xs={12} className="signup-center-text">
+          <span className={`signup-error-message ${error}`}>{errorText}</span>
         </Col>
       </Row>
       <Row>
-        <Col xs={12} className="login-input">
-          <div className="login-form-width">
+        <Col xs={12} className="signup-input">
+          <div className="signup-form-width">
             <InputGroup className="mb-3">
               <FormControl
                 placeholder="username"
@@ -91,8 +84,21 @@ function Login({ setToken }) {
             </InputGroup>
           </div>
         </Col>
-        <Col xs={12} className="login-input">
-          <div className="login-form-width">
+        <Col xs={12} className="signup-input">
+          <div className="signup-form-width">
+            <InputGroup className="mb-3">
+              <FormControl
+                placeholder="email"
+                aria-label="email"
+                type="email"
+                ref={emailRef}
+                onKeyDown={handleKeyDown}
+              />
+            </InputGroup>
+          </div>
+        </Col>
+        <Col xs={12} className="signup-input">
+          <div className="signup-form-width">
             <InputGroup className="mb-3">
               <FormControl
                 placeholder="password"
@@ -104,13 +110,13 @@ function Login({ setToken }) {
             </InputGroup>
           </div>
         </Col>
-        <Col xs={12} className="login-center-text login-button-column">
+        <Col xs={12} className="signup-center-text signup-button-column">
           <div>
             <Button
-              className="btn btn-primary btn-lg login-button"
-              onClick={() => login()}
+              className="btn btn-primary btn-lg signup-button"
+              onClick={() => signup()}
             >
-              Login
+              Signup
             </Button>
           </div>
         </Col>
@@ -119,8 +125,4 @@ function Login({ setToken }) {
   );
 }
 
-Login.propTypes = {
-  setToken: PropTypes.func.isRequired,
-};
-
-export default withRouter(Login);
+export default Signup;

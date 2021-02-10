@@ -1,7 +1,7 @@
 {
-  "name": "container",
+  "name": "signup",
   "version": "1.1.0",
-  "description": "A micro frontend container",
+  "description": "A signup micro frontend",
   "author": "Joel Kell",
   "scripts": {
     "start": "react-app-rewired start",

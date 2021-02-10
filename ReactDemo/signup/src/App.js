@@ -1,13 +1,9 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Login from "./Login";
+import Signup from "./Signup";
 
 const defaultHistory = createBrowserHistory();
-
-function setToken(userToken) {
-  localStorage.setItem("token", JSON.stringify(userToken));
-}
 
 class App extends React.Component {
   render() {
@@ -15,10 +11,7 @@ class App extends React.Component {
       <Router history={this.props.history || defaultHistory}>
         <Switch>
           <Route path="/">
-            <Login
-              setToken={setToken}
-              history={this.props.history || defaultHistory}
-            />
+            <Signup history={this.props.history || defaultHistory} />
           </Route>
         </Switch>
       </Router>

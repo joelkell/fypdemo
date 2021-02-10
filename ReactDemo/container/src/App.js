@@ -5,21 +5,21 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Product from "./components/Product/Product";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PublicRoute from "./components/PublicRoute/PublicRoute";
 import NoMatch from "./components/NoMatch/NoMatch";
+import LoginPage from "./components/LoginPage/LoginPage";
+import SignupPage from "./components/SignupPage/SignupPage";
 
 import "./App.css";
 
-const {
-  REACT_APP_LOGIN_HOST: loginHost,
-  REACT_APP_BROWSE_HOST: browseHost,
-} = process.env;
-
-function Login({ history }) {
-  return <MicroFrontend history={history} host={loginHost} name="Login" />;
-}
+const { REACT_APP_BROWSE_HOST: browseHost } = process.env;
 
 function Browse({ history }) {
   return <MicroFrontend history={history} host={browseHost} name="Browse" />;
+}
+
+function myAccount({ history }) {
+  return <div>myaccount</div>;
 }
 
 const App = () => {
@@ -29,19 +29,12 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path="/" component={Browse} />
-          <Route exact path="/login" component={Login} />
+          <PublicRoute exact path="/login" component={LoginPage} />
+          <PublicRoute exact path="/signup" component={SignupPage} />
           <Route exact path="/cart">
             <div>cart</div>
           </Route>
-          <PrivateRoute exact path="/signup">
-            <div>signup</div>
-          </PrivateRoute>
-          <Route exact path="/logout">
-            <div>logout</div>
-          </Route>
-          <Route exact path="/myaccount">
-            <div>myaccount</div>
-          </Route>
+          <PrivateRoute exact path="/myaccount" component={myAccount} />
           <Route exact path="/products/:id" component={Product} />
           <Route path="*" component={NoMatch} />
         </Switch>

@@ -6,9 +6,7 @@ import "./Item.css";
 import placeholder from "./placeholder-images.png";
 
 function Item({ product, history }) {
-  const [imageSource, setSource] = useState(
-    require("./placeholder-images.png")
-  );
+  const [imageSource, setSource] = useState(placeholder);
   const redirect = () => {
     history.push(`/products/${product._id}`);
   };

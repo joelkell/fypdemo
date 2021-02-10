@@ -8,6 +8,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./Header.css";
 
 function Header() {
+  const logout = () => {
+    localStorage.removeItem("token");
+  };
+
   return (
     <Navbar
       collapseOnSelect
@@ -36,8 +40,11 @@ function Header() {
                 Sign Up
               </NavDropdown.Item>
             </LinkContainer>
-            <LinkContainer to="/logout">
-              <NavDropdown.Item className="bg-dark text-white">
+            <LinkContainer to="/">
+              <NavDropdown.Item
+                className="bg-dark text-white"
+                onClick={() => logout()}
+              >
                 Logout
               </NavDropdown.Item>
             </LinkContainer>

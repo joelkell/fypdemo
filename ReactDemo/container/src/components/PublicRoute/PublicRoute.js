@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 
-function PrivateRoute({ component, history, ...rest }) {
+function PublicRoute({ component, history, ...rest }) {
   let child = component();
   let token = getToken();
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        token ? (
+        !token ? (
           child
         ) : (
-          <Redirect to={{ pathname: "/login", state: { from: location } }} />
+          <Redirect to={{ pathname: "/", state: { from: location } }} />
         )
       }
     />
@@ -33,4 +33,4 @@ function getToken() {
   }
 }
 
-export default withRouter(PrivateRoute);
+export default withRouter(PublicRoute);

@@ -1,4 +1,4 @@
-# Browse
+# Signup
 
 ## Getting started
 
