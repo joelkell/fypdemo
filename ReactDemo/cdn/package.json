@@ -4,7 +4,7 @@
   "description": "A cdn for image delivery",
   "author": "Joel Kell",
   "scripts": {
-    "start": "serve --port 5002 --cors content"
+    "start": "serve -p 5002 --cors content"
   },
   "devDependencies": {
     "serve": "^11.3.2"
