@@ -19,6 +19,9 @@ public interface UserServiceClient extends UserServiceOperations {
   @Get("/{id}")
   Maybe<User> getUserById(String id);
 
+  @Get("/username/{id}")
+  Maybe<User> getUserByUsername(String id);
+
   @Post("/login")
   @Consumes(MediaType.APPLICATION_JSON)
   TokenHttpWrapper getToken(@Body User user);

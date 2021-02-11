@@ -34,6 +34,12 @@ public class UserController {
     return userDAO.getUserById(id);
   }
 
+  @Get("/username/{id}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Maybe<User> getUserByUsername(String id) {
+    return userDAO.getUserByUsername(id);
+  }
+
   @Post("/login")
   @Consumes(MediaType.APPLICATION_JSON)
   public TokenHttpWrapper getToken(@Body @Valid User user) {

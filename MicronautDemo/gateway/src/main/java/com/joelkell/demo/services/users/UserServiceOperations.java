@@ -13,6 +13,8 @@ public interface UserServiceOperations {
 
   Maybe<User> getUserById(String id);
 
+  Maybe<User> getUserByUsername(String id);
+
   TokenHttpWrapper getToken(@Body User user);
 
   Boolean getUserPasswordMatchesName(User user);

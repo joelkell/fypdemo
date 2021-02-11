@@ -1,5 +1,6 @@
 package com.joelkell.demo.security;
 
+import com.joelkell.demo.services.users.User;
 import com.nimbusds.jose.shaded.json.JSONObject;
 import edu.umd.cs.findbugs.annotations.Nullable;
 import io.micronaut.http.HttpRequest;
@@ -12,7 +13,6 @@ import io.micronaut.security.authentication.AuthenticationProvider;
 import io.micronaut.security.authentication.AuthenticationRequest;
 import io.micronaut.security.authentication.AuthenticationResponse;
 import io.micronaut.security.authentication.UserDetails;
-import io.micronaut.security.token.jwt.render.BearerAccessRefreshToken;
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import org.reactivestreams.Publisher;
@@ -41,7 +41,9 @@ public class AuthenticationProviderUserPassword implements AuthenticationProvide
 
         return Flowable.create(emitter -> {
             if (rsp.body()) {
-                emitter.onNext(new UserDetails((String) authenticationRequest.getIdentity(), new ArrayList<>()));
+                HttpRequest<?> userRequest = HttpRequest.GET("/users/username/"+authenticationRequest.getIdentity());
+                HttpResponse<User> userResponse = client.toBlocking().exchange(userRequest, User.class);
+                emitter.onNext(new UserDetails(userResponse.body().getId().toString(), new ArrayList<>()));
                 emitter.onComplete();
             } else {
                 emitter.onError(new AuthenticationException(new AuthenticationFailed()));

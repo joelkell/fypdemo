@@ -36,6 +36,12 @@ public class UserController {
   }
 
   @Secured(SecurityRule.IS_ANONYMOUS)
+  @Get("/username/{id}")
+  public Maybe<User> getUserByUsername(String id) {
+    return userServiceOperations.getUserByUsername(id);
+  }
+
+  @Secured(SecurityRule.IS_ANONYMOUS)
   @Post("/password")
   public Boolean getUserPasswordMatchesName(User user) {
     return userServiceOperations.getUserPasswordMatchesName(user);
