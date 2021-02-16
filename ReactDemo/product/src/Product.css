@@ -1,0 +1,38 @@
+.product-loading-container {
+  height: 100vh;
+}
+
+.product-spinner-center > svg {
+  margin: auto;
+  display: block;
+}
+
+.product-details-col {
+  border: 2px #dadada solid;
+  padding: 10px !important;
+}
+
+.product-image-col {
+  padding: 0;
+}
+
+.product-button-cart {
+  width: 20%;
+  height: 20%;
+  min-width: fit-content;
+  min-height: fit-content;
+  margin-left: auto;
+  margin-right: 30px;
+}
+
+@media (min-width: 576px) {
+  .product-image-col {
+    padding-right: 10px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .product-image-col {
+    padding: 10px !important;
+  }
+}

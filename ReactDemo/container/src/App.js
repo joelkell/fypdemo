@@ -18,7 +18,7 @@ function Browse({ history }) {
   return <MicroFrontend history={history} host={browseHost} name="Browse" />;
 }
 
-function myAccount({ history }) {
+function myAccount() {
   return <div>myaccount</div>;
 }
 

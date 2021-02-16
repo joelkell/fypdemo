@@ -36,7 +36,7 @@ function Signup({ history }) {
   const handleResponse = (response) => {
     if (response.status === 200) {
       return response.json().then((data) => {
-        SignupSuccessful(data);
+        createCart(data);
       });
     } else if (response.status === 403 || response.status) {
       return response.text().then((data) => {
@@ -48,7 +48,28 @@ function Signup({ history }) {
     }
   };
 
-  const SignupSuccessful = (data) => {
+  const createCart = (data) => {
+    fetch(`http://localhost:8080/users/username/${data.username}`).then(
+      (response) => {
+        response.json().then((user) => {
+          fetch("http://localhost:8080/carts/createCart/", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: user._id,
+            }),
+          }).then(() => {
+            SignupSuccessful();
+          });
+        });
+      }
+    );
+  };
+
+  const SignupSuccessful = () => {
     setError("invisible");
     history.push("/login");
   };

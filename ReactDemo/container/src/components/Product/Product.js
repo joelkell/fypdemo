@@ -1,7 +1,17 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import NoMatch from "../NoMatch/NoMatch";
+import MicroFrontend from "../../MicroFrontend";
 
-class Product extends React.Component {
+const { REACT_APP_PRODUCT_HOST: productHost } = process.env;
+
+function Product({ history }) {
+  return <MicroFrontend history={history} host={productHost} name="Product" />;
+}
+
+class ProductPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -56,20 +66,21 @@ class Product extends React.Component {
   render() {
     if (this.state.loading) {
       return <div>loading</div>;
-      //return "Loading";
     }
     if (this.state.error) {
       return <NoMatch history={this.props.history} />;
-      //return "Sorry, but that restaurant is currently unavailable.";
     }
 
     return (
-      <div>
-        <div>name: {this.state.name}</div>
-        <div>description: {this.state.description}</div>
-      </div>
+      <Container fluid="true">
+        <Row noGutters>
+          <Col xs={12} lg={8}>
+            <Product history={this.props.history} />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
 
-export default Product;
+export default ProductPage;
