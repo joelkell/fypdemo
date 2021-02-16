@@ -26,7 +26,7 @@ public class CartController {
     return cartServiceOperations.getCartByUserId(id);
   }
 
-  @Secured(SecurityRule.IS_AUTHENTICATED)
+  @Secured(SecurityRule.IS_ANONYMOUS)
   @Post("/createCart/")
   public HttpResponse<?> createCart(@Body @Valid Cart cart) {
     CartHttpWrapper cartHttpWrapper = cartServiceOperations.createCart(cart);

@@ -29,7 +29,7 @@ public class UserController {
     return userServiceOperations.getAllUsers();
   }
 
-  @Secured(SecurityRule.IS_AUTHENTICATED)
+  @Secured(SecurityRule.IS_ANONYMOUS)
   @Get("/{id}")
   public Maybe<User> getUserById(String id) {
     return userServiceOperations.getUserById(id);
