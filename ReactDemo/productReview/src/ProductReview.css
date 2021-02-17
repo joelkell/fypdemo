@@ -1,0 +1,34 @@
+.productReview-loading-container {
+  height: 100vh;
+}
+
+.productReview-spinner-center > svg {
+  margin: auto;
+  display: block;
+}
+
+.productReview-review-div {
+  border: 2px #dadada solid;
+  margin-bottom: 10px;
+}
+.productReview-review-container {
+  border: 2px #dadada solid;
+  box-shadow: 0 0 10px #9ecaed;
+  padding: 10px !important;
+}
+
+.productReview-review-container > div {
+  width: 100%;
+  margin: auto;
+}
+
+.productReview-review-button-col {
+  margin-bottom: 20px;
+  padding-right: 40px !important;
+}
+
+@media (max-width: 576px) {
+  .productReview-review-button-col {
+    padding-right: 20px !important;
+  }
+}

@@ -236,7 +236,6 @@ class Product extends React.Component {
             <div>
               <h1 className="h1">€{this.state.product.price}</h1>
               <div>{this.state.product.description}</div>
-              <div>{this.state.product.stockLevel}</div>
             </div>
             <Button
               className="product-button-cart"

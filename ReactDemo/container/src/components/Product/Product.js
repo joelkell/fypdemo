@@ -5,10 +5,25 @@ import Col from "react-bootstrap/Col";
 import NoMatch from "../NoMatch/NoMatch";
 import MicroFrontend from "../../MicroFrontend";
 
-const { REACT_APP_PRODUCT_HOST: productHost } = process.env;
+import "./Product.css";
+
+const {
+  REACT_APP_PRODUCT_HOST: productHost,
+  REACT_APP_PRODUCTREVIEW_HOST: productReviewHost,
+} = process.env;
 
 function Product({ history }) {
   return <MicroFrontend history={history} host={productHost} name="Product" />;
+}
+
+function ProductReview({ history }) {
+  return (
+    <MicroFrontend
+      history={history}
+      host={productReviewHost}
+      name="ProductReview"
+    />
+  );
 }
 
 class ProductPage extends React.Component {
@@ -39,7 +54,6 @@ class ProductPage extends React.Component {
           categories: data.categories,
           loading: false,
         });
-        console.log(this.state.categories);
       });
     } else if (response.status === 404) {
       return response.json().then((data) => {
@@ -74,8 +88,11 @@ class ProductPage extends React.Component {
     return (
       <Container fluid="true">
         <Row noGutters>
-          <Col xs={12} lg={8}>
+          <Col xs={12} lg={8} className="container-product-container">
             <Product history={this.props.history} />
+          </Col>
+          <Col xs={12} className="container-productReview-container">
+            <ProductReview history={this.props.history} />
           </Col>
         </Row>
       </Container>
