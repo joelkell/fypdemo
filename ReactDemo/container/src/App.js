@@ -9,6 +9,7 @@ import PublicRoute from "./components/PublicRoute/PublicRoute";
 import NoMatch from "./components/NoMatch/NoMatch";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignupPage from "./components/SignupPage/SignupPage";
+import AccountPage from "./components/AccountPage/AccountPage";
 
 import "./App.css";
 
@@ -16,10 +17,6 @@ const { REACT_APP_BROWSE_HOST: browseHost } = process.env;
 
 function Browse({ history }) {
   return <MicroFrontend history={history} host={browseHost} name="Browse" />;
-}
-
-function myAccount() {
-  return <div>myaccount</div>;
 }
 
 const App = () => {
@@ -34,7 +31,7 @@ const App = () => {
           <Route exact path="/cart">
             <div>cart</div>
           </Route>
-          <PrivateRoute exact path="/myaccount" component={myAccount} />
+          <PrivateRoute exact path="/myaccount" component={AccountPage} />
           <Route exact path="/products/:id" component={Product} />
           <Route path="*" component={NoMatch} />
         </Switch>

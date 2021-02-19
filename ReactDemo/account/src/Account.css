@@ -1,0 +1,8 @@
+.account-loading-container {
+  height: 100vh;
+}
+
+.account-spinner-center > svg {
+  margin: auto;
+  display: block;
+}
