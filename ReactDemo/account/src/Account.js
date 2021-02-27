@@ -16,13 +16,6 @@ function Account({ history }) {
   const [loading, setLoading] = useState(false);
   const [formLocked, setFormLocked] = useState(true);
   const [validated, setValidated] = useState(false);
-  const [usernameError, setUsernameError] = useState(
-    "Username cannot be empty"
-  );
-  const [emailError, setEmailError] = useState("Email cannot be empty");
-  const [passwordError, setPasswordError] = useState(
-    "Password cannot be empty"
-  );
   const [editButton, setEditButton] = useState("Edit");
 
   useEffect(() => {
@@ -148,7 +141,7 @@ function Account({ history }) {
                       required
                     />
                     <Form.Control.Feedback type="invalid">
-                      {usernameError}
+                      Username cannot be empty
                     </Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
@@ -164,7 +157,7 @@ function Account({ history }) {
                       required
                     />
                     <Form.Control.Feedback type="invalid">
-                      {emailError}
+                      Email cannot be empty
                     </Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>
@@ -179,7 +172,7 @@ function Account({ history }) {
                       required
                     />
                     <Form.Control.Feedback type="invalid">
-                      {passwordError}
+                      Password cannot be empty
                     </Form.Control.Feedback>
                   </InputGroup>
                 </Form.Group>

@@ -131,7 +131,11 @@ class ProductReview extends React.Component {
 
   addReview() {
     let token = this.getToken();
-    let reviewExists = this.getReview(token);
+    let reviewExists;
+    if (token) {
+      reviewExists = this.getReview(token);
+    }
+
     if (!token) {
       this.handleLoginModalShow();
     } else if (reviewExists) {
