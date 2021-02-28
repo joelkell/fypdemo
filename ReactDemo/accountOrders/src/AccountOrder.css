@@ -1,0 +1,19 @@
+.accountOrder-loading-container {
+  height: 100vh;
+}
+
+.accountOrder-spinner-center > svg {
+  margin: auto;
+  display: block;
+}
+
+.accountOrder-order-div {
+  border: 2px #dadada solid;
+  margin-bottom: 10px;
+}
+
+.accountOrder-order-items {
+  border: 2px #dadada solid;
+  margin-bottom: 10px;
+  padding: 10px;
+}
