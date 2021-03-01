@@ -10,10 +10,15 @@ import "./Product.css";
 const {
   REACT_APP_PRODUCT_HOST: productHost,
   REACT_APP_PRODUCTREVIEW_HOST: productReviewHost,
+  REACT_APP_CART_HOST: cartHost,
 } = process.env;
 
 function Product({ history }) {
   return <MicroFrontend history={history} host={productHost} name="Product" />;
+}
+
+function Cart({ history }) {
+  return <MicroFrontend history={history} host={cartHost} name="Cart" />;
 }
 
 function ProductReview({ history }) {
@@ -33,11 +38,7 @@ class ProductPage extends React.Component {
     this.state = {
       loading: true,
       error: false,
-      name: null,
-      description: null,
-      stockLevel: null,
-      price: null,
-      categories: null,
+      product: null,
       errormessage: null,
     };
   }
@@ -45,19 +46,13 @@ class ProductPage extends React.Component {
   handleResponse = (response) => {
     if (response.status === 200) {
       return response.json().then((data) => {
-        console.log(data);
         this.setState({
-          name: data.name,
-          description: data.description,
-          stockLevel: data.stockLevel,
-          price: data.price,
-          categories: data.categories,
+          product: data,
           loading: false,
         });
       });
     } else if (response.status === 404) {
       return response.json().then((data) => {
-        console.log(data);
         this.setState({
           loading: false,
           error: true,
@@ -89,10 +84,19 @@ class ProductPage extends React.Component {
       <Container fluid="true">
         <Row noGutters>
           <Col xs={12} lg={8} className="container-product-container">
-            <Product history={this.props.history} />
+            <div key={this.props.match.params.id}>
+              <Product history={this.props.history} />
+            </div>
+          </Col>
+          <Col xs={12} lg={4} className="container-cart-container">
+            <div key={this.props.match.params.id}>
+              <Cart history={this.props.history} />
+            </div>
           </Col>
           <Col xs={12} className="container-productReview-container">
-            <ProductReview history={this.props.history} />
+            <div key={this.props.match.params.id}>
+              <ProductReview history={this.props.history} />
+            </div>
           </Col>
         </Row>
       </Container>

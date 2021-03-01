@@ -246,7 +246,7 @@ class ProductReview extends React.Component {
       <Container fluid="true">
         <Row noGutters>
           <Col xs={12}>
-            <h1 className="display-4"> Reviews</h1>
+            <h1 className="display-4">Reviews</h1>
           </Col>
           <Col
             xs={12}

@@ -1,0 +1,29 @@
+.cart-loading-container {
+  height: 100vh;
+}
+
+.cart-spinner-center > svg {
+  margin: auto;
+  display: block;
+}
+
+.cart-container {
+  border: 2px #dadada solid;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.cart-cart-items {
+  border: 2px #dadada solid;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.cart-remove-button {
+  width: fit-content;
+}
+
+.cart-order-button {
+  width: fit-content;
+}

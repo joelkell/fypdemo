@@ -141,6 +141,11 @@ class Product extends React.Component {
     });
   }
 
+  sendEvent(data) {
+    const event = new CustomEvent("addToCart", { detail: data });
+    window.dispatchEvent(event);
+  }
+
   updatePrice(data, userId, authToken) {
     let totalPrice =
       data.totalPrice + data.deliveryPrice + this.state.product.price;
@@ -158,6 +163,10 @@ class Product extends React.Component {
         cartItems: data.cartItems,
         totalPrice: totalPrice,
       }),
+    }).then((response) => {
+      response.json().then((data) => {
+        this.sendEvent(data);
+      });
     });
   }
 
@@ -237,14 +246,16 @@ class Product extends React.Component {
               <h1 className="h1">€{this.state.product.price}</h1>
               <div>{this.state.product.description}</div>
             </div>
-            <Button
-              className="product-button-cart"
-              variant="dark"
-              disabled={this.state.buttonDisabled}
-              onClick={() => this.addToCart()}
-            >
-              Add to Cart
-            </Button>
+            <div className="d-flex flex-row justify-content-end">
+              <Button
+                className="product-button-cart"
+                variant="dark"
+                disabled={this.state.buttonDisabled}
+                onClick={() => this.addToCart()}
+              >
+                Add to Cart
+              </Button>
+            </div>
 
             <Modal
               show={this.state.modalShow}

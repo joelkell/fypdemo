@@ -10,6 +10,7 @@ import NoMatch from "./components/NoMatch/NoMatch";
 import LoginPage from "./components/LoginPage/LoginPage";
 import SignupPage from "./components/SignupPage/SignupPage";
 import AccountPage from "./components/AccountPage/AccountPage";
+import CartPage from "./components/Cart/CartPage";
 
 import "./App.css";
 
@@ -28,9 +29,7 @@ const App = () => {
           <Route exact path="/" component={Browse} />
           <PublicRoute exact path="/login" component={LoginPage} />
           <PublicRoute exact path="/signup" component={SignupPage} />
-          <Route exact path="/cart">
-            <div>cart</div>
-          </Route>
+          <Route exact path="/cart" component={CartPage} />
           <PrivateRoute exact path="/myaccount" component={AccountPage} />
           <Route exact path="/products/:id" component={Product} />
           <Route path="*" component={NoMatch} />
