@@ -1,6 +1,12 @@
+#delete old volumes
 docker system prune --volumes --filter "label!=keep" -f
-# cd into folders and yarn build
-cd container
+
+#build backend services
+cd MicronautDemo
+mvn clean install
+
+#build frontend services
+cd ../ReactDemo/container
 yarn build
 cd ../login
 yarn build
@@ -18,4 +24,7 @@ cd ../accountOrders
 yarn build
 cd ../cart
 yarn build
+
+#start compose
+cd ../../
 docker-compose up --build

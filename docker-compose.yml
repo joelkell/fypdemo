@@ -1,13 +1,12 @@
 version: "3.7"
 services:
-
   consul:
     image: consul
     ports:
       - 8500:8500
 
   gateway:
-    build: ./gateway
+    build: ./MicronautDemo/gateway
     links:
       - consul
     ports:
@@ -19,7 +18,7 @@ services:
       CONSUL_PORT: 8500
 
   products:
-    build: ./products
+    build: ./MicronautDemo/products
     links:
       - consul
       - mongodb
@@ -32,7 +31,7 @@ services:
       CONSUL_PORT: 8500
 
   users:
-    build: ./users
+    build: ./MicronautDemo/users
     links:
       - consul
       - mongodb
@@ -45,7 +44,7 @@ services:
       CONSUL_PORT: 8500
 
   reviews:
-    build: ./reviews
+    build: ./MicronautDemo/reviews
     links:
       - consul
       - mongodb
@@ -58,7 +57,7 @@ services:
       CONSUL_PORT: 8500
 
   carts:
-    build: ./carts
+    build: ./MicronautDemo/carts
     links:
       - consul
       - mongodb
@@ -71,7 +70,7 @@ services:
       CONSUL_PORT: 8500
 
   orders:
-    build: ./orders
+    build: ./MicronautDemo/orders
     links:
       - consul
       - mongodb
@@ -89,6 +88,61 @@ services:
       - "27020:27017"
     volumes:
       - mongodb_data:/data/db
+
+  nginx:
+    build: ./ReactDemo/nginx
+    ports:
+      - "80:80"
+
+  container:
+    build: ./ReactDemo/container
+    ports:
+      - "3000"
+
+  login:
+    build: ./ReactDemo/login
+    ports:
+      - "3001:3000"
+
+  browse:
+    build: ./ReactDemo/browse
+    ports:
+      - "3002:3000"
+
+  signup:
+    build: ./ReactDemo/signup
+    ports:
+      - "3003:3000"
+
+  product:
+    build: ./ReactDemo/product
+    ports:
+      - "3004:3000"
+
+  productreview:
+    build: ./ReactDemo/productReview
+    ports:
+      - "3005:3000"
+
+  account:
+    build: ./ReactDemo/account
+    ports:
+      - "3006:3000"
+
+  accountorders:
+    build: ./ReactDemo/accountOrders
+    ports:
+      - "3007:3000"
+
+  cart:
+    build: ./ReactDemo/cart
+    ports:
+      - "3008:3000"
+
+  cdn:
+    build: ./ReactDemo/cdn
+    ports:
+      - "5002:3000"
 
 volumes:
   mongodb_data:
