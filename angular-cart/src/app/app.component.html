@@ -1,0 +1,45 @@
+<div class="container-true cart-outer-container">
+  <div class="row no-gutters" *ngIf="loggedIn">
+    <div class="col-12">
+      <h1 class="display-4">Cart</h1>
+    </div>
+    <div class="col-12">
+      <div class="d-flex flex-column justify-content-between cart-container col-12">
+        <div class="lead" *ngIf="!cart?.cartItems">
+          No Items in Cart
+        </div>
+        <ng-container *ngIf="cart?.cartItems">
+          <div class="lead d-flex flex-column justify-content-between cart-cart-items"
+            *ngFor="let cartItem of cart.cartItems; let i = index" [attr.data-index]="i">
+            <a href="/products/{{cartItem.productId}}">{{cartItem.name}}</a>
+            <div>Quantity: {{cartItem.quantity}}</div>
+            <div class="d-flex flex-row justify-content-end">
+              <button type="button" class="cart-remove-button btn btn-danger"
+                (click)="removeItemFromCart(i, cartItem.productId, cartItem.quantity)">Remove From
+                Cart</button>
+            </div>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="cart">
+          <div class="lead">Delivery Price: €{{cart.deliveryPrice}}</div>
+          <div class="lead">Total Price: €{{cart.totalPrice}}</div>
+          <div class="d-flex flex-row justify-content-end">
+            <button type="button" class="cart-order-button btn btn-success" (click)="createOrder()">Order</button>
+          </div>
+        </ng-container>
+      </div>
+      <small class="text-muted">Built with Angular</small>
+    </div>
+  </div>
+  <div class="row no-gutters" *ngIf="!loggedIn">
+    <div class="col-12">
+      <h1 class="display-4">Cart</h1>
+    </div>
+    <div class="col-12">
+      <div class="lead">
+        <a href="/login">Login</a> to add items to cart
+      </div>
+      <small class="text-muted">Built with Angular</small>
+    </div>
+  </div>
+</div>

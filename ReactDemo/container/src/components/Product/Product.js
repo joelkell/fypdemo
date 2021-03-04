@@ -18,7 +18,7 @@ function Product({ history }) {
 }
 
 function Cart({ history }) {
-  return <MicroFrontend history={history} host={cartHost} name="Cart" />;
+  return <MicroFrontend history={history} host={cartHost} name="cart" />;
 }
 
 function ProductReview({ history }) {

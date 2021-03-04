@@ -266,7 +266,7 @@ function Cart() {
     );
   } else if (!loggedIn) {
     return (
-      <Container fluid="true">
+      <Container fluid="true" className="cart-outer-container">
         <Row noGutters>
           <Col xs={12}>
             <h1 className="display-4">Cart</h1>
@@ -281,7 +281,7 @@ function Cart() {
     );
   } else {
     return (
-      <Container fluid="true">
+      <Container fluid="true" className="cart-outer-container">
         <Row noGutters>
           <Col xs={12}>
             <h1 className="display-4">Cart</h1>

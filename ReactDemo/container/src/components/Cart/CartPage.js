@@ -10,7 +10,7 @@ import "./CartPage.css";
 const { REACT_APP_CART_HOST: cartHost } = process.env;
 
 function Cart({ history }) {
-  return <MicroFrontend history={history} host={cartHost} name="Cart" />;
+  return <MicroFrontend history={history} host={cartHost} name="cart" />;
 }
 
 const CartPage = () => {

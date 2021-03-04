@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { unregister } from "./registerServiceWorker";
 
-window.renderCart = (containerId, history) => {
+window.rendercart = (containerId, history) => {
   ReactDOM.render(
     <App history={history} />,
     document.getElementById(containerId)
@@ -12,11 +12,11 @@ window.renderCart = (containerId, history) => {
   unregister();
 };
 
-window.unmountCart = (containerId) => {
+window.unmountcart = (containerId) => {
   ReactDOM.unmountComponentAtNode(document.getElementById(containerId));
 };
 
-if (!document.getElementById("Cart-container")) {
+if (!document.getElementById("cart-container")) {
   ReactDOM.render(<App />, document.getElementById("container"));
   unregister();
 }

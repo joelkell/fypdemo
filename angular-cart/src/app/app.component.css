@@ -1,10 +1,5 @@
-.cart-loading-container {
-  height: 100vh;
-}
-
-.cart-spinner-center > svg {
-  margin: auto;
-  display: block;
+.cart-outer-container:hover {
+  border: 2px red solid;
 }
 
 .cart-container {
@@ -26,8 +21,4 @@
 
 .cart-order-button {
   width: fit-content;
-}
-
-.cart-outer-container:hover {
-  border: 2px blue solid;
 }
